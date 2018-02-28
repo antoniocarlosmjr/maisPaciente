@@ -18,7 +18,7 @@ public class UtilClientInfo {
         final String userAgent = getUserAgent(request);
         
         System.out.println("\n" +
-                            "Usuario Agent \t" + userAgent + "\n" +
+                            "Pessoa Agent \t" + userAgent + "\n" +
                             "Operating System\t" + clientOS + "\n" +
                             "Browser Name\t" + clientBrowser + "\n" +
                             "IP Address\t" + clientIpAddr + "\n" +
@@ -65,7 +65,7 @@ public class UtilClientInfo {
 
     //http://stackoverflow.com/a/18030465/1845894
     public static String getClientOS(HttpServletRequest request) {
-        final String browserDetails = request.getHeader("Usuario-Agent");
+        final String browserDetails = request.getHeader("Pessoa-Agent");
 
         //=================OS=======================
         final String lowerCaseBrowser = browserDetails.toLowerCase();
@@ -86,7 +86,7 @@ public class UtilClientInfo {
 
     //http://stackoverflow.com/a/18030465/1845894
     public static String getClientBrowser(HttpServletRequest request) {
-        final String browserDetails = request.getHeader("Usuario-Agent");
+        final String browserDetails = request.getHeader("Pessoa-Agent");
         final String user = browserDetails.toLowerCase();
 
         String browser = "";
@@ -128,7 +128,7 @@ public class UtilClientInfo {
     }
 
     public static String getUserAgent(HttpServletRequest request) {
-        return request.getHeader("Usuario-Agent");
+        return request.getHeader("Pessoa-Agent");
     }
 
 }

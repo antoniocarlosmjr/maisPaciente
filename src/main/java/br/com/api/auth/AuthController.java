@@ -10,11 +10,11 @@ import org.apache.commons.mail.Email;
 
 import com.auth0.jwt.exceptions.JWTCreationException;
 
-import br.com.api.dao.UsuarioDAO;
+import br.com.api.dao.PessoaDAO;
 import br.com.api.dao.TokenDAO;
 import br.com.api.enumeration.Role;
 import br.com.api.enumeration.TipoRestricao;
-import br.com.api.model.Usuario;
+import br.com.api.model.Pessoa;
 import br.com.api.model.Token;
 import br.com.api.util.CustomValidator;
 import br.com.api.util.UtilClientInfo;
@@ -36,7 +36,7 @@ public class AuthController {
 
     @Inject private Result result;
     @Inject private HttpServletRequest request;
-    @Inject private UsuarioDAO usuarioDAO;
+    @Inject private PessoaDAO pessoaDAO;
     @Inject private CustomValidator validator;
     @Inject private TokenDAO tokenDAO;
     @Inject private AsyncMailer mailer;
@@ -51,20 +51,20 @@ public class AuthController {
     	validator.addIfIsEmpty(senha, "Senha", "Senha não preenchida");
     	validator.onErrorSendBadRequest();
     	
-    	Usuario usuario = usuarioDAO.consultarPorEmail(email);
+    	Pessoa pessoa = pessoaDAO.consultarPorEmail(email);
     	
     	// valida se email foi cadastrado
-    	validator.addIf( usuario == null, "Email", "Email não cadastrado");
+    	validator.addIf( pessoa == null, "Email", "Email não cadastrado");
     	validator.onErrorSendForbidden();
     	
     	// valida a senha
-    	boolean isSenhaCorreta = UtilPassword.check(senha, usuario.getSenha());
+    	boolean isSenhaCorreta = UtilPassword.check(senha, pessoa.getSenha());
     	
     	validator.addIf( !isSenhaCorreta, "Senha", "Senha incorreta");
     	validator.onErrorSendForbidden();
     	
     	// gera o jwt
-    	String jwt = UtilToken.createToken(usuario.getId());
+    	String jwt = UtilToken.createToken(pessoa.getId());
     	
     	String clientIpAddr = UtilClientInfo.getClientIpAddr(request);
     	String clientOS = UtilClientInfo.getClientOS(request);
@@ -74,15 +74,15 @@ public class AuthController {
     	Token token = new Token(jwt, clientOS, clientBrowser, clientIpAddr);
     	
     	// define o dono do token
-    	token.setPessoa(usuario);
+    	token.setPessoa(pessoa);
     	
     	// inclui o registro
     	tokenDAO.inserir(token);
     	
-    	usuario.setToken(jwt);
+    	pessoa.setToken(jwt);
     	
     	// os atributos senha, CPF e RG não serão serializados
-		UtilResult.retornarObjetoExclude(result, usuario, "senha", "cpf", "rg", "chaveAlteracaoSenha", "telefone");
+		UtilResult.retornarObjetoExclude(result, pessoa, "senha", "cpf", "rg", "chaveAlteracaoSenha", "telefone");
     }
     
     @Delete("/logout")
@@ -92,10 +92,10 @@ public class AuthController {
     public void logOut(@HeaderParam(value = "authorization") String jwt) throws IllegalArgumentException, UnsupportedEncodingException {
     	Long idPessoa = UtilToken.decode(jwt);
     	
-    	Usuario usuario = usuarioDAO.consultarPorID(idPessoa);
+    	Pessoa pessoa = pessoaDAO.consultarPorID(idPessoa);
     	
     	// remove o token passado
-    	for (Token token : usuario.getTokens()) {
+    	for (Token token : pessoa.getTokens()) {
 			if (token.getJwt().equals(jwt)) {
 				tokenDAO.remover(token);
 				break;
@@ -114,25 +114,25 @@ public class AuthController {
     	validator.onErrorSendBadRequest();
     	
     	// consulta por cpf ou cnpj
-    	Usuario usuario = usuarioDAO.consultarPorEmail(email);
+    	Pessoa pessoa = pessoaDAO.consultarPorEmail(email);
 
     	// acesso negado
-    	validator.addIf(usuario==null, "E-mail", "E-mail não encontrado");
+    	validator.addIf(pessoa==null, "E-mail", "E-mail não encontrado");
     	validator.onErrorSendBadRequest();
     	
 		// cria chave de recuperação
 		String chave = UtilGeradorChaveNovaSenha.getChave();
 		
     	// altera o o fornecedo com a nova chave
-		usuario.setChaveAlteracaoSenha(chave);
+		pessoa.setChaveAlteracaoSenha(chave);
 		
-		usuarioDAO.alterar(usuario);
+		pessoaDAO.alterar(pessoa);
 		
 		Email emailSender = this.templates
 				.template("esqueciSenha")
-				.with("nome", usuario.getNome() + " " + usuario.getSobrenome())
-				.with("chave", usuario.getChaveAlteracaoSenha())
-				.to("Recuperação de senha", usuario.getEmail())
+				.with("nome", pessoa.getNome() + " " + pessoa.getSobrenome())
+				.with("chave", pessoa.getChaveAlteracaoSenha())
+				.to("Recuperação de senha", pessoa.getEmail())
 				.setSubject("Recuperação de senha");
 		
 		mailer.asyncSend(emailSender);
@@ -152,21 +152,21 @@ public class AuthController {
     	validator.onErrorSendBadRequest();
     	
     	// consulta por cpf ou cnpj
-    	Usuario usuario = usuarioDAO.consultarPorEmail(email);
+    	Pessoa pessoa = pessoaDAO.consultarPorEmail(email);
 
     	
     	// bad request caso não encontre o fornecedor ou a chave não seja igual a passada na requisição
-    	validator.addIf(usuario == null || 
-    			usuario.getChaveAlteracaoSenha() == null ||
-    			!usuario.getChaveAlteracaoSenha().equals(chave.toLowerCase()), 
+    	validator.addIf(pessoa == null || 
+    			pessoa.getChaveAlteracaoSenha() == null ||
+    			!pessoa.getChaveAlteracaoSenha().equals(chave.toLowerCase()), 
     		"Dados", "Dados incorretos, favor verificar seu e-mail.");
     	validator.onErrorSendBadRequest();
 		
 		// altera a senha
-    	usuario.setSenha(UtilPassword.crypt(senha));
-    	usuario.setChaveAlteracaoSenha("");
+    	pessoa.setSenha(UtilPassword.crypt(senha));
+    	pessoa.setChaveAlteracaoSenha("");
 		
-    	usuarioDAO.alterar(usuario);
+    	pessoaDAO.alterar(pessoa);
 		
 		// ok
 		UtilResult.retornarCodigoHttp(result, 200);
@@ -186,21 +186,21 @@ public class AuthController {
     	Long id = UtilToken.decode(jwt);
     	
     	// consulta por cpf ou cnpj
-    	Usuario usuario = usuarioDAO.consultarPorID(id);
+    	Pessoa pessoa = pessoaDAO.consultarPorID(id);
     	
-    	validator.addIf(usuario==null, "Registro", "Registro não econtrado");
+    	validator.addIf(pessoa==null, "Registro", "Registro não econtrado");
     	validator.onErrorSendBadRequest();
     	
     	// verifica se a senha atual é válida
-    	boolean isSenhaValida = UtilPassword.check(senhaAntiga, usuario.getSenha());
+    	boolean isSenhaValida = UtilPassword.check(senhaAntiga, pessoa.getSenha());
     	
     	validator.addIf(!isSenhaValida, "", "");
     	validator.onErrorSendForbidden();
     	
     	// altera a senha
-    	usuario.setSenha(UtilPassword.crypt(senhaNova));
+    	pessoa.setSenha(UtilPassword.crypt(senhaNova));
     	
-    	usuarioDAO.alterar(usuario);
+    	pessoaDAO.alterar(pessoa);
     	
     	// ok
     	UtilResult.retornarCodigoHttp(result, 200);

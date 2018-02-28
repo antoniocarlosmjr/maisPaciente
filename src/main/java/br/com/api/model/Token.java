@@ -23,7 +23,7 @@ public class Token {
 	private Long id;
 	
 	@ManyToOne
-	private Usuario usuario;
+	private Pessoa pessoa;
 	
 	/**
 	 * Token JWT
@@ -76,12 +76,12 @@ public class Token {
 		this.ip = ip;
 	}
 
-	public Usuario getPessoa() {
-		return usuario;
+	public Pessoa getPessoa() {
+		return pessoa;
 	}
 
-	public void setPessoa(Usuario usuario) {
-		this.usuario = usuario;
+	public void setPessoa(Pessoa pessoa) {
+		this.pessoa = pessoa;
 	}
 	
 }

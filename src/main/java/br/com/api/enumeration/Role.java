@@ -1,17 +1,17 @@
 package br.com.api.enumeration;
 
-import br.com.api.model.Usuario;
+import br.com.api.model.Pessoa;
 
 public enum Role {
-	GERAL(Usuario.class);
+	GERAL(Pessoa.class);
 	
-	private final Class<? extends Usuario> classe;
+	private final Class<? extends Pessoa> classe;
 	
-	private Role(Class<? extends Usuario> classe) {
+	private Role(Class<? extends Pessoa> classe) {
 		this.classe = classe;
 	}
 
-	public Class<? extends Usuario> getClasse() {
+	public Class<? extends Pessoa> getClasse() {
 		return classe;
 	}
 }

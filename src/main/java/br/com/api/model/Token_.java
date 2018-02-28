@@ -8,7 +8,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 @StaticMetamodel(Token.class)
 public class Token_ {
 	public static volatile SingularAttribute<Token, Long> id;
-	public static volatile SingularAttribute<Token, Usuario> usuario;
+	public static volatile SingularAttribute<Token, Pessoa> pessoa;
 	public static volatile SingularAttribute<Token, String> jwt;
 	public static volatile SingularAttribute<Token, String> sistemaOperacional;
 	public static volatile SingularAttribute<Token, String> browser;

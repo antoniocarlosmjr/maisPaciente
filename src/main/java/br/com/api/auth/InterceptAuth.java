@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.auth0.jwt.exceptions.JWTVerificationException;
 
-import br.com.api.dao.UsuarioDAO;
+import br.com.api.dao.PessoaDAO;
 import br.com.api.enumeration.Role;
 import br.com.api.enumeration.TipoRestricao;
 import br.com.api.exception.ExcecaoAcessoNaoPermitido;
 import br.com.api.exception.ExcecaoAcessoNegado;
-import br.com.api.model.Usuario;
+import br.com.api.model.Pessoa;
 import br.com.api.model.Token;
 import br.com.api.util.UtilResult;
 import br.com.api.util.UtilToken;
@@ -33,7 +33,7 @@ public class InterceptAuth {
 
 	@Inject private HttpServletRequest request;
 	@Inject private Result result;
-	@Inject private UsuarioDAO usuarioDAO;
+	@Inject private PessoaDAO pessoaDAO;
 
 	/**
 	 * Qualquer requisição que não tenha a restrição "ABERTO" terá o token validado
@@ -59,29 +59,29 @@ public class InterceptAuth {
 	 * @param stack
 	 */
 	private void validarToken(SimpleInterceptorStack stack, Restricao restricao) {
-		Long idUsuario = null;
+		Long idPessoa = null;
 
 		// recupera o token da requisição
 		String token = request.getHeader("authorization");
 
 		try {
 			try {
-				idUsuario = UtilToken.decode(token);
+				idPessoa = UtilToken.decode(token);
 			} catch (IllegalArgumentException | UnsupportedEncodingException | JWTVerificationException
 					| NullPointerException e) {
 				throw new ExcecaoAcessoNaoPermitido("Token inválido ou não informado");
 			}
 
-			// consulta o usuario no banco
-			Usuario usuario = usuarioDAO.consultarPorID(idUsuario);
+			// consulta o pessoa no banco
+			Pessoa pessoa = pessoaDAO.consultarPorID(idPessoa);
 
 			// verifica se o token existe
-			if(!this.tokenExistente(token, usuario)) {
+			if(!this.tokenExistente(token, pessoa)) {
 				throw new ExcecaoAcessoNaoPermitido("Token não existe na base de dados");
 			}
 
 			// verifica se possui acesso ao método
-			if(!possuiAcesso(restricao, usuario)){
+			if(!possuiAcesso(restricao, pessoa)){
 				throw new ExcecaoAcessoNegado("Não possui acesso ao método");
 			}
 
@@ -109,7 +109,7 @@ public class InterceptAuth {
 		}
 	}
 
-	private boolean possuiAcesso(Restricao restricao, Usuario usuario) {
+	private boolean possuiAcesso(Restricao restricao, Pessoa pessoa) {
 		// possui acesso caso o método não tenha restrição ou não tenha roles
 		if (restricao == null || restricao.roles() == null) {
 			return true;
@@ -117,24 +117,24 @@ public class InterceptAuth {
 
 		// verifica se o usuário está autorizado a acessar o método
 		Role busca = Arrays.asList(restricao.roles()).stream()
-				.filter( role -> role.getClasse().isAssignableFrom(usuario.getClass()) )
+				.filter( role -> role.getClasse().isAssignableFrom(pessoa.getClass()) )
 				.findAny().orElse(null);
 
 		return busca != null;
 	}
 
 	/**
-	 * Método responsável por verificar se a usuario possui o token passado
+	 * Método responsável por verificar se a pessoa possui o token passado
 	 * @param jwt
-	 * @param usuario
+	 * @param pessoa
 	 * @return
 	 */
-	private boolean tokenExistente(String jwt, Usuario usuario) {
-		if (usuario == null || jwt == null || jwt.isEmpty() || usuario.getTokens().isEmpty()) {
+	private boolean tokenExistente(String jwt, Pessoa pessoa) {
+		if (pessoa == null || jwt == null || jwt.isEmpty() || pessoa.getTokens().isEmpty()) {
 			return false;
 		}
 
-		Token busca = usuario.getTokens().stream()
+		Token busca = pessoa.getTokens().stream()
 				.filter(token -> token.getJwt().equals(jwt))
 				.findAny().orElse(null);
 

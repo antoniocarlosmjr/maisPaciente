@@ -21,7 +21,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 public class UtilToken {
 
 	private static final String SECRET = "*api_*_*_*api-rest*";
-	public static final String IDUSUARIO = "idUsuario";
+	public static final String IDPESSOA = "idPessoa";
 
 	/**
 	 * @deprecated CDI eyes only
@@ -65,9 +65,9 @@ public class UtilToken {
 		
 		DecodedJWT jwt = verifier.verify(token);
 
-		Long idUsuario = Long.parseLong(jwt.getSubject());
+		Long idPessoa = Long.parseLong(jwt.getSubject());
 
-		return idUsuario;
+		return idPessoa;
 	}
 	
 	public Long getIdToken(String token){

@@ -16,6 +16,6 @@ public class IndexController {
     @Get("/")
     @Restricao(tipoRestricao=TipoRestricao.ABERTO)
     public void index() {
-        result.include("mensagem", "vraptor-blank-project-rest :)~");
+        result.include("mensagem", "maisPaciente-blank-project-rest :)~");
     }
 }

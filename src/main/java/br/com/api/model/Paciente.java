@@ -1,9 +1,11 @@
 package br.com.api.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Paciente extends Pessoa implements Serializable{
@@ -34,7 +36,8 @@ public class Paciente extends Pessoa implements Serializable{
 		this.acompanhanteAss = acompanhanteAss;
 	}
 	
-	
+	@OneToMany
+	private List<Acompanhante> acompanhantes;
 	
 	
 	

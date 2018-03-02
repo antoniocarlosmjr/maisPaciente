@@ -11,7 +11,7 @@ public class Acompanhante extends Pessoa implements Serializable{
 
 	private static final long serialVersionUID = 7893171355651108502L;
 
-	@Column(unique=true, nullable=true)
+	@Column(nullable=true)
 	private Long pacienteAss;
 
 

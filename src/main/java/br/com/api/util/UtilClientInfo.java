@@ -4,7 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * 
- * Classe responsável por recurar as informações da resuisição
+ * Classe responsável por recurar as informações da requisição
  *
  */
 public class UtilClientInfo {

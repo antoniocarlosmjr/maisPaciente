@@ -27,6 +27,7 @@ import br.com.caelum.vraptor.view.Results;
 
 /**
  * Classe com finalidade de interceptar as requisições e autenticar o token
+ * Padrao de Projeto Utilizado: Facade
  */
 @Intercepts
 public class InterceptAuth {

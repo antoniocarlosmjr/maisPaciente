@@ -1,6 +1,8 @@
 package br.com.api.model;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
@@ -16,6 +18,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+/*
+ * Padrao Utilizado: Factory
+ */
+
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Pessoa implements Serializable {
@@ -28,18 +34,14 @@ public abstract class Pessoa implements Serializable {
 	
 	private String nome;
 	
-	private String sobrenome;
-	
 	private String sexo;
 	
 	private String telefone;
 	
-	//Como inserir data no formato do banco?
 	@Temporal(TemporalType.DATE)
 	private Calendar dataNascimento;
 	
 	@Column(nullable=true)
-	@GeneratedValue
 	private String cpf;
 	
 	@Column(unique=true, nullable=true)
@@ -150,14 +152,6 @@ public abstract class Pessoa implements Serializable {
 		this.nome = nome;
 	}
 	
-	public String getSobrenome() {
-		return sobrenome;
-	}
-
-	public void setSobrenome(String sobrenome) {
-		this.sobrenome = sobrenome;
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -220,6 +214,14 @@ public abstract class Pessoa implements Serializable {
 
 	public void setBairro(String bairro) {
 		this.bairro = bairro;
+	}
+	
+	public void setDatanascimento(String data) throws ParseException {
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Calendar instance = Calendar.getInstance();
+		instance.setTime(simpleDateFormat.parse(data));
+		
+		this.setDataNascimento(instance);
 	}
 	
 }

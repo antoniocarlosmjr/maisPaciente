@@ -130,7 +130,6 @@ public class AuthController {
 		
 		Email emailSender = this.templates
 				.template("esqueciSenha")
-				.with("nome", pessoa.getNome() + " " + pessoa.getSobrenome())
 				.with("chave", pessoa.getChaveAlteracaoSenha())
 				.to("Recuperação de senha", pessoa.getEmail())
 				.setSubject("Recuperação de senha");

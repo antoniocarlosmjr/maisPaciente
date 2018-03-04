@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+    <ul class="sidebar-menu">
+        <li>
+            <p:link href="/index.xhtml">
+                <i class="fa fa-home"></i>
+                <span>Início</span>
+            </p:link>
+        </li>
+        <li class="header">
+            OPÇÕES
+            <li>
+                <p:link href="/pages/paciente/default/lista-default.xhtml">
+                    <i class="fa fa-edit"></i>
+                    <span>Default</span>
+                </p:link>
+            </li>
+             <li>
+                <p:link href="/pages/paciente/cirurgia/cirurgia.xhtml">
+                    <i class="glyphicon glyphicon-heart"></i>
+                    <span>Cirurgias</span>
+                </p:link>   
+            </li>
+             <li>
+                <p:link href="/pages/paciente/recomendacoes/recomendacoes.xhtml">
+                    <i class="fa fa-edit"></i>
+                    <span>Recomendações</span>
+                </p:link>
+            </li>
+             <li>
+                <p:link href="/pages/paciente/documentos/documentos.xhtml">
+                    <i class="glyphicon glyphicon-folder-open"></i>
+                    <span>Documentos</span>
+                </p:link>
+            </li>
+             <li>
+                <p:link href="/pages/paciente/duvidas/duvidas.xhtml">
+                    <i class="glyphicon glyphicon-comment"></i>
+                    <span>Dúvidas</span>
+                </p:link>
+            </li>
+
+            <li>
+                <p:link href="/pages/paciente/criticas/criticas.xhtml">
+                    <i class="glyphicon glyphicon-thumbs-up"></i>
+                    <span>Críticas e sugestões</span>
+                </p:link>
+            </li>
+            <li>
+                <p:link href="">
+                    <i class="glyphicon glyphicon-remove-sign" style="color:red;"></i>
+                    <span style="color:red;">Sair</span>
+                </p:link>
+            </li>
+     </li>
+    </ul>
+
+
+</ui:composition>

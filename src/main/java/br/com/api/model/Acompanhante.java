@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Acompanhante extends Pessoa implements Serializable{
@@ -24,5 +26,7 @@ public class Acompanhante extends Pessoa implements Serializable{
 		this.pacienteAss = pacienteAss;
 	}
 
-
+@OneToOne
+private Paciente paciente;
+	
 }

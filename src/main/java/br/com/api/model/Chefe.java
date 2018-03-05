@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Chefe extends Pessoa implements Serializable{
@@ -19,5 +20,9 @@ public class Chefe extends Pessoa implements Serializable{
 	public void setNumIdentificacao(Long numIdentificacao) {
 		this.numIdentificacao = numIdentificacao;
 	}
+	
+	@OneToOne
+	private Relatorio relatorio;
 
 }
+

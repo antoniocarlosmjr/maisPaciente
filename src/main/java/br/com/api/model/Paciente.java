@@ -1,11 +1,18 @@
 package br.com.api.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Paciente extends Pessoa implements Serializable{
@@ -39,6 +46,13 @@ public class Paciente extends Pessoa implements Serializable{
 	@OneToMany
 	private List<Acompanhante> acompanhantes;
 	
+	@OneToOne
+	private Cardapio cardapio;
+	
+	@OneToOne
+	private AGHU aghu;
+	
+		
 	
 	
 	

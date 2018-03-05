@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>+P|Login</title>
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" />
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+	<!-- Compiled and minified CSS -->
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" />
+	<!--Import jQuery before materialize.js-->
+	<script type="text/javascript"
+		src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+	<!-- Compiled and minified JavaScript -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+	<link rel="shortcut icon" type="image/x-icon" href="#{resource['images/favicon.ico']}"/>
+	
+</h:head>
+<h:body styleClass="Hex Gray98">
+
+	<p:growl life="4000" id="msgmGlobal" />
+	<div id="logo">
+		<h:form>
+			<div align="center">
+				<h:graphicImage value="#{resource['images/logoinit.jpeg']}"
+					height="200" width="200" />
+			</div>
+			<!--  h:panelGrid columns="0" >
+				<h3 class="center">Seja Bem Vindo ao +Paciente</h3>
+			</h:panelGrid -->
+		</h:form>
+	</div>
+
+	<div class="valign-wrapper" id="login-page">
+
+		<div class="container">
+
+			<div class="center-align">
+				<div class="row">
+					<div class="col s6 offset-s3">
+						<div class="card">
+							<div class="card-content">
+
+								<h6>Por favor, entre com as suas credenciais</h6>
+
+								<div class="left-align">
+									<h:form id="login-form">
+										<p:growl autoUpdate="true" />
+										<div class="row">
+											<div class="col s12 input-field">
+												<h:outputLabel for="email" value="Email:" />
+												<p:inputText id="email" value="#{userLoginView.email}"
+													regEx="/[a-z0-9_\.\-@]/i" required="true" label="email" />
+
+											</div>
+
+											<div class="col s12 input-field">
+												<h:inputSecret id="password" required="true"
+													value="#{userLoginView.password}"
+													requiredMessage="Por favor, digite uma senha" />
+												<h:outputLabel for="password" value="Senha:" />
+
+											</div>
+
+											<div class="col s12 input-field center ">
+
+												<h:outputText id="login-mesaj" value="#{giris.mesaj}"
+													style="color:red" />
+												<br></br>
+
+												<h:commandButton styleClass="btn btn-success"
+													value="Ativar Cadastro" style="margin-right:17px"
+													action="#{giris.oturumac()}">
+													<f:ajax execute="login-form" render="login-mesaj" />
+												</h:commandButton>
+
+												<h:commandButton styleClass="btn" margin="5px"
+													value="Entrar" action="#{giris.oturumac()}">
+													<f:ajax execute="login-form" render="login-mesaj" />
+												</h:commandButton>
+											</div>
+
+											<div class="col s12 input-field  center">
+												<h:commandButton styleClass="btn btn-primary"
+													value="Novo Acompanhante? Clique aqui."
+													action="#{giris.oturumac()}">
+													<f:ajax execute="login-form" render="login-mesaj" />
+												</h:commandButton>
+											</div>
+
+
+										</div>
+
+									</h:form>
+
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+    /**
+     * Faces Validator
+     */
+    PrimeFaces.validator['custom.emailValidator'] = {
+ 
+        pattern: /\S+@\S+/,
+ 
+        validate: function(element, m) {
+            //use element.data() to access validation metadata, in this case there is none.
+            if(!this.pattern.test(value)) {
+                throw {
+                    summary: 'Validation Error',
+                    detail: value + ' Este não é um  email válido.'
+                }
+            }
+        }
+    };
+ 
+    /**
+     * Bean validator
+     */
+    PrimeFaces.validator['Email'] = {
+ 
+        pattern: /\S+@\S+/,
+ 
+        MESSAGE_ID: 'org.primefaces.examples.validate.email.message',
+ 
+        validate: function(element, value) {
+            var vc = PrimeFaces.util.ValidationContext;
+ 
+            if(!this.pattern.test(value)) {
+                var msgStr = element.data('p-email-msg'),
+                msg = msgStr ? {summary:msgStr, detail: msgStr} : vc.getMessage(this.MESSAGE_ID);
+ 
+                throw msg;
+            }
+        }
+    };
+</script>
+
+	<script>
+            $(document).on("ready", function () {
+                $('login-page').css({'height': window.innerHeight + 'px'});
+            });
+        </script>
+
+
+</h:body>
+</html>

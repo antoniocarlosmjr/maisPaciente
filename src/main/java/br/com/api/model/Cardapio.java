@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -68,7 +69,11 @@ public class Cardapio implements Serializable {
 	}
 
 
+	@ManyToOne
+	private Paciente paciente;
 	
+	@ManyToOne
+	private Acompanhante acompanhante;
 	
 	
 }

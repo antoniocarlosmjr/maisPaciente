@@ -3,6 +3,145 @@
                 xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui" xmlns:adm="http://github.com/adminfaces"
                 template="/WEB-INF/templates/template.xhtml">
+    <style type="text/css">
+    	.example-modal .modal {
+        position: relative;
+        top: auto;
+        bottom: auto;
+        right: auto;
+        left: auto;
+        display: block;
+        z-index: 1;
+      }
 
+      .example-modal .modal {
+        background: transparent !important;
+      }
+
+    </style> 	
+
+    <ui:define name="title">
+        <strong>Minhas cirurgias</strong>
+    </ui:define>
+
+    <ui:define name="body">
+        <f:metadata>
+        </f:metadata>
+
+
+        <section class="content">
+      <div class="alert alert-success">
+        <h4><strong>Importante!</strong></h4>
+
+        <p>Abaixo são mostradas as cirurgias que você possui. Caso queira exibir detalhes de sua cirurgia clique sobre o botão "detalhes", já se quiser cancelar sua cirurgia clique em "Cancelar cirurgia".</p>
+      </div>
+
+      <div class="box">
+        <div class="box-header with-border">
+          <h3 class="box-title"><strong>Cirurgia Bariátrica</strong></h3>
+
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Ver menos">
+              <i class="fa fa-minus"></i></button>
+          </div>
+        </div>
+        <div class="box-body">
+
+        	<!--p:commandButton type="button" class="btn btn-info" value="Detalhes" process="@this"
+                                         icon="fa fa-info-circle"
+                                         styleClass="btn-info"
+                                         data-toggle="modal"
+                                         data-target="#modal-info"
+                                         onclick="PF('dlg5').show('');"
+                                         >
+          </p:commandButton-->
+          <button type="button" class="btn btn-info" data-toggle="modal" data-target="#modal-info"><span class="fa fa-info-circle"></span> Detalhes</button>
+         
+         <!--p:dialog header="Informações sobre sua cirurgia" widgetVar="dlg5" modal="false" height="150" width="500" align="center">
+           <h:outputText value="This is a Modal Dialog." />
+          </p:dialog--> 
+
+          <div class="modal modal-info fade" id="modal-info" widgetVar="dlg5">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">x</span></button>
+                  <h4 class="modal-title"><b>Informações sobre sua cirurgia</b></h4>
+                </div>
+                <div class="modal-body">
+                  <p>One fine bodyddd</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline" data-dismiss="modal">OK</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+  
+        	<p:commandButton value="Cancelar cirurgia" process="@this"
+                                         icon="fa fa-times-circle"
+                                         styleClass="btn-danger">
+          </p:commandButton>
+
+        </div>
+      </div>
+     </section>
+
+
+        <!--h:form id="form" prependId="false">
+            <p:focus/>
+
+			
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <div id="main-buttons" class="hidden-sm hidden-xs">
+                        <p:commandButton value="Salvar" update="@form"
+                                         icon="fa fa-check" styleClass="btn-primary"/>
+                        <p:spacer width="5"/>
+
+                        <p:commandButton value="Excluir" process="@this"
+                                         icon="fa fa-trash"
+                                         styleClass="btn-danger">
+                        </p:commandButton>
+                        <p:spacer width="5"/>
+                        <p:commandButton value="Voltar" immediate="true"
+                                         action="lista-default?faces-redirect=true"
+                                         process="@this"
+                                         icon="fa fa-close"/>
+                                         
+                    </div>
+                    
+                    <p:splitButton value="Salvar" update="@form"
+                                   icon="fa fa-check"
+                                   styleClass="hidden-md hidden-lg btn-primary">
+                        <p:menuitem value="Excluir"
+                                    process="@this"
+                                    icon="fa fa-trash"/>
+                        <p:separator/>
+                        <p:menuitem value="Voltar" action="lista-default?faces-redirect=true" process="@this"
+                                    icon="fa fa-close"/>
+                    </p:splitButton>
+
+                    
+
+                    <p:separator/>
+
+                    <div class="ui-g ui-fluid">
+                        <div class="ui-g-12">
+                            <p:outputLabel for="id" value="ID"/>
+                        </div>
+                        <div class="ui-g-12">
+                            <p:inputText id="id" value="" size="4" readonly="true" styleClass="form-control"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </h:form-->
+
+    </ui:define>
 
 </ui:composition>

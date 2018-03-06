@@ -5,49 +5,25 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:pe="http://primefaces.org/ui/extensions">
 <style type="text/css">
-            .skin-green-light .main-header .navbar {
+            .skin-blue-light .main-header .navbar {
                 background-color: #229d89;
             }
-            .skin-green-light a.dropdown-toggle {
+            .skin-blue a.dropdown-toggle {
                 background-color: #229d89 !important;
             }
-            .skin-green-light .main-header .logo {
-                background-color: #229d89;
-                color: #fff;
-                border-bottom: 0 solid transparent;
-            }
-
+            .skin-blue .main-header .navbar {
+			    background-color: #229d89;
+			}
+			.skin-blue .main-header .logo {
+			    background-color: #229d89;
+			    color: #fff;
+			    border-bottom: 0 solid transparent;
+			}
 </style>
 
     <ul class="nav navbar-nav">
       <!-- Só deve mostrar esse menu de notificações se for paciente ou acompanhante -->
       <!-- Messages: style can be found in dropdown.less-->
-        <li class="dropdown notifications-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <i class="fa fa-bell-o" style="font-size:18px;"></i>
-                  <span class="label label-danger" style="font-size:13px;">2</span>
-                </a>
-                <ul class="dropdown-menu">
-                  <li class="header">Você tem 2 notificações</li>
-                  <li>
-                    <!-- inner menu: contains the actual data -->
-                    <ul class="menu">                
-                      <li>
-                        <a href="#">
-                          <i class="ion ion-ios-people info"></i> Solicitação de desistência cirúrgica
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i class="fa fa-heart"></i> Uma cirurgia foi marcada.
-                        </a>
-                      </li>
-
-                    </ul>
-                  </li>
-                  <li class="footer"><a href="#">Ver todas</a></li>
-              </ul>
-        </li>
 
         <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">

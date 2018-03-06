@@ -2,33 +2,13 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui" xmlns:adm="http://github.com/adminfaces"
-                template="/WEB-INF/templates/template.xhtml">
-    <style type="text/css">
-    	.example-modal .modal {
-        position: relative;
-        top: auto;
-        bottom: auto;
-        right: auto;
-        left: auto;
-        display: block;
-        z-index: 1;
-      }
-
-      .example-modal .modal {
-        background: transparent !important;
-      }
-
-    </style> 	
-
+                template="/WEB-INF/templates/template.xhtml">	
     <ui:define name="title">
         <strong>Minhas cirurgias</strong>
     </ui:define>
-
     <ui:define name="body">
         <f:metadata>
         </f:metadata>
-
-
         <section class="content">
       <div class="alert alert-success">
         <h4><strong>Importante!</strong></h4>
@@ -70,7 +50,21 @@
                   <h4 class="modal-title"><b>Informações sobre sua cirurgia</b></h4>
                 </div>
                 <div class="modal-body">
-                  <p>One fine bodyddd</p>
+                <h:form>
+                  <p>Detalhes de minha cirurgia:</p>
+                  <form>
+                    <p><b>Nome da cirurgia:</b>
+                        <text> Bariátrica </text> </p>
+                    <p><b>Paciente:</b> 
+                      <text> Antonio da Silva </text></p>
+                    <p><b>Médico:</b> 
+                      <text> João Santos Silva </text></p>
+                    <p><b>Status de cirurgia:</b> 
+                      <text> Marcada </text> </p>
+                    <p><b>Data de cirurgia:</b> 
+                      <text> 10/10/2018 </text></p>
+                  </form>
+                </h:form>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-outline" data-dismiss="modal">OK</button>
@@ -78,15 +72,39 @@
               </div>
             </div>
           </div>
-
-
-
   
-        	<p:commandButton value="Cancelar cirurgia" process="@this"
+        	<!--p:commandButton value="Cancelar cirurgia" process="@this"
                                          icon="fa fa-times-circle"
                                          styleClass="btn-danger">
-          </p:commandButton>
+          </p:commandButton-->
 
+          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger"><span class="fa fa-times-circle"></span> Cancelar cirurgia</button>
+
+          <div class="modal modal-danger fade" id="modal-danger">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">x</span></button>
+                <h4 class="modal-title"><b>Solicitação de cancelamento da cirurgia</b></h4>
+              </div>
+              <div class="modal-body">
+                <h:form>
+                  <h:panelGrid columns="1" cellpadding="5">
+                    <h:outputLabel for="name" value="Informe o motivo de cancelamento de sua cirurgia:" />
+                    <p:inputTextarea rows="5" cols="85" counter="display" counterTemplate="Limite de 500 caracteres." label="name" autoResize="false" />
+                    <h:outputText id="display" />
+                  </h:panelGrid>
+                </h:form>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Voltar</button>
+                <button type="button" class="btn btn-outline">Confirmar</button>
+              </div>
+            </div>
+          </div>
+        </div>
         </div>
       </div>
      </section>

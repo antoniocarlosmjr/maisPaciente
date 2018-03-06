@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" xmlns:adm="http://github.com/adminfaces"
+                template="/WEB-INF/templates/template.xhtml">
+
+<ui:define name="title">
+        <strong>Meus dados</strong>
+    </ui:define>
+
+<ui:define name="body">
+        <div class="row">
+        	<div class="col-md-12">
+
+	          <div class="box box-success">
+	            <div class="box-header">
+	            </div>
+	            <div class="box-body">
+	            	<div class="form-group">
+                		<label>Número de prontuário:</label>
+                			99512364<br></br>
+                		<label>Nome:</label>
+                			Antonio da Silva<br></br>
+                		<label>CPF:</label>
+                			01234567890<br></br>
+                		<label>Email:</label>
+                			paciente@maispaciente.com.br<br></br>
+                		<label>Data de nascimento:</label>
+                			23/06/1995<br></br>
+                		<label>Gênero:</label>
+                			Masculino<br></br>
+                		<label>Endereço:</label>
+                			Rua BD, 256. Rosa Elze - São Cristóvão/SE<br></br>
+                		<label>Tel./Contato:</label>
+                            (79) 9 9904-9999<br></br>
+                        
+                	</div>
+	            </div>
+	          </div>
+	           <p:commandButton value="Voltar" icon="fa fa-reply" onclick="javascript:history.back(1);" />
+	         </div>
+     	</div>
+</ui:define>
+</ui:composition>

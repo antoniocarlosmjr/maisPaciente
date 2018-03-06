@@ -5,7 +5,30 @@
                 template="/WEB-INF/templates/template.xhtml">
 
 <ui:define name="title">
-        <strong>Documentos que estou assinando</strong>
+        <strong>Informações sobre documentos</strong>
+</ui:define>
+
+<ui:define name="body">
+<div class="alert alert-success">
+        <h4><strong>Importante!</strong></h4>
+        <p>Abaixo está sendo apresentado a documentação a ser assinada pelo paciente para realização de cirurgia.</p>
+      </div>
+      
+      <div class="box">
+        <div class="box-header with-border">
+          <h3 class="box-title" height="1000px"><strong>Documentos</strong></h3>
+
+          <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Ver menos">
+              <i class="fa fa-minus"></i></button>
+          </div>
+          <div class="box-body">
+          	<li>Risco Cirúrgico</li>
+          	<li>Autorização de Internação Hospitalar</li>
+          	<li>Material Perfuro Cortante</li>
+          </div>
+        </div>
+       </div>
 </ui:define>
 
 

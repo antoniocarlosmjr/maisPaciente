@@ -51,40 +51,53 @@
 						<div class="card" style="width: 650px;">
 							<div class="card-content">
 
-								<h6>Por favor, preencha os campos abaixo para ativar a sua conta</h6>
+								<h6>Por favor, preencha os campos abaixo para ativar a sua
+									conta</h6>
 
 								<div class="left-align">
 									<h:form id="registrationForm">
-										<p:panel header="Registration Form" style="width: 600px;">
+										<p:panel header="Registration Form" width="600px">
 											<p:messages />
 											<h:panelGrid columns="2"
 												columnClasses="labelColumn, fieldColumn">
-												<p:outputLabel value="UserName" />
+												<p:outputLabel value="Nome Completo" />
 												<p:inputText id="userName"
 													value="#{userController.registrationUser.userName}"
 													label="UserName" />
 
-												<p:outputLabel value="Password" />
-												<p:password id="password"
+
+												<p:outputLabel value="Número de prontuário" />
+												<p:inputMask mask="999999999" id="prontuario"
 													value="#{userController.registrationUser.password}"
-													label="Password" />
+													label="prontuario" />
 
-												<p:outputLabel value="FirstName" />
-												<p:inputText id="firstName"
+												<p:outputLabel value="CPF" />
+												<p:inputText id="cpf"
 													value="#{userController.registrationUser.firstName}"
-													label="FirstName" />
+													label="cpf" />
 
-												<p:outputLabel value="LastName" />
-												<p:inputText id="lastName"
-													value="#{userController.registrationUser.lastName}" />
+												<p:outputLabel value="Data de nascimento" />
+												<p:inputText id="nascimento"
+													value="#{userController.registrationUser.lastName}"
+													label="nascimento" />
+
+												<p:outputLabel value="Telefone/Celular" />
+												<p:inputText id="telefone"
+													value="#{userController.registrationUser.lastName}"
+													label="telefone" />
+
+												<p:outputLabel value="Endereço" />
+												<p:inputText id="endereco"
+													value="#{userController.registrationUser.lastName}"
+													label="endereco" />
 
 												<p:outputLabel value="Email" />
 												<p:inputText id="email"
 													value="#{userController.registrationUser.email}" />
-
+												
 												<p:outputLabel value="" />
 												<p:commandButton action="#{userController.register}"
-													value="Ativar Cadastro" update="registrationForm" />
+													value="Cadastrar Paciente" update="registrationForm" />
 
 											</h:panelGrid>
 										</p:panel>

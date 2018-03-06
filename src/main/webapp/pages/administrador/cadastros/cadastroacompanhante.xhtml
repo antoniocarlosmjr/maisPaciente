@@ -5,21 +5,16 @@
                 template="/WEB-INF/templates/template.administrador.xhtml">
 
 <ui:define name="title">
-        <strong>Cadastrar Paciente</strong>
+        <strong>Cadastrar Acompanhante</strong>
 </ui:define>
 
 <ui:define name="body">
-
 <h:form>
            <h:panelGrid columns="2" cellpadding="5" hight="5">
             	
             	<p:outputLabel for="nome" value="Nome completo: "/>
                 <p:inputText id="nome" value="#{UsuarioMB.usuario.id}" size="40"
                 required="true"  requiredMessage="Campo Nome deve ser preenchido." />
-                
-                <p:outputLabel for="numProntuario" value="Nº prontuário: "/>
-                <p:inputMask id="numProntuario" value="#{UsuarioMB.usuario.id}" mask="9.999.999"
-                required="true"  requiredMessage="Campo de número de prontuário deve ser preenchido." />
                 
                 <p:outputLabel for="cpf" value="CPF:"/>
                 <p:inputMask id="cpf" value="#{UsuarioMB.usuario.id}" mask="999.999.999-99"
@@ -53,8 +48,6 @@
 <p:commandButton  class="btn btn-success" value="Cadastrar" icon="fa fa-plus" 
                    action="#{UsuarioMB.cadastraUsuario}" update="messages">
                   </p:commandButton>
-
 </ui:define>
-
 
 </ui:composition>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" xmlns:adm="http://github.com/adminfaces"
+                template="/WEB-INF/templates/template.administrador.xhtml">
+
+<ui:define name="title">
+        <strong>Selecione o cadastro que quer realizar</strong>
+        <p></p>
+         
+</ui:define>
+
+
+<ui:define name="body">
+	<div class="col-lg-6 col-xs-5">
+					<!-- small box -->
+					<div class="small-box bg-yellow">
+						<div class="inner">
+							<h3 style="font-size: 25px">
+								CADASTRAR PACIENTE<sup style="font-size: 5px"></sup>
+							</h3>
+						</div>
+						<div class="icon">
+							<i class="ion ion-android-contact"></i>
+						</div>
+						<a href="cadastropaciente.xhtml"
+							class="small-box-footer" style="font-size: 20px">Acessar <i
+							class="fa fa-arrow-circle-right"></i></a>
+					</div>
+					
+					
+				</div>
+				<div class="col-lg-6 col-xs-5">
+					<!-- small box -->
+					<div class="small-box bg-purple">
+						<div class="inner">
+							<h3 style="font-size: 25px">CADASTRAR ACOMPANHANTE</h3>
+						</div>
+						<div class="icon">
+							<i class="ion ion-android-contacts"></i>
+						</div>
+						<a href="cadastroacompanhante.xhtml"
+							class="small-box-footer" style="font-size: 20px">Acessar <i
+							class="fa fa-arrow-circle-right"></i></a>
+					</div>
+				</div>
+
+</ui:define>
+
+</ui:composition>

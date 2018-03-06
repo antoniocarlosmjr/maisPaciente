@@ -24,7 +24,7 @@ public class Paciente extends Pessoa implements Serializable{
 	private Long numProntuario;
 	
 	private Long cartaoSUS;
-	
+	@Column(nullable=false)
 	private Long acompanhanteAss;
 
 	public Long getCartaoSUS() {
@@ -46,15 +46,16 @@ public class Paciente extends Pessoa implements Serializable{
 	@OneToMany
 	private List<Acompanhante> acompanhantes;
 	
-	@OneToOne
-	private Cardapio cardapio;
+	@OneToMany
+	@JoinColumn(name="id")
+	private List<Cirurgia> cirurgias;
+	
+	@OneToMany
+	@JoinColumn(name="id")
+	private List<Cardapio> cardapios;
+	
 	
 	@OneToOne
 	private AGHU aghu;
-	
-		
-	
-	
-	
 
 }

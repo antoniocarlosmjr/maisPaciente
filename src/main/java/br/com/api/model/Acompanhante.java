@@ -1,10 +1,14 @@
 package br.com.api.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -26,7 +30,11 @@ public class Acompanhante extends Pessoa implements Serializable{
 		this.pacienteAss = pacienteAss;
 	}
 
-@OneToOne
+@ManyToOne
 private Paciente paciente;
 	
+@OneToMany
+@JoinColumn(name="id")
+private List<Cardapio> cardapios;
+
 }

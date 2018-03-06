@@ -2,6 +2,7 @@ package br.com.api.model;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +13,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -27,7 +30,7 @@ public class Cardapio implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column
+	@Column(nullable = true)
 	private String descricao;
 	
 	@Enumerated(EnumType.STRING)
@@ -35,6 +38,14 @@ public class Cardapio implements Serializable {
 	
 	@Temporal(TemporalType.DATE)
 	private Calendar data;
+	
+//	@OneToMany
+//	@JoinColumn(name="id")
+//	private List<Paciente> pacientes;
+//	
+//	@OneToMany
+//	@JoinColumn(name="id")
+//	private List<Acompanhante> acompanhantes;
 	
 	public Long getId() {
 		return id;

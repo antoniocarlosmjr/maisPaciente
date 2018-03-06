@@ -13,6 +13,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -33,18 +36,22 @@ public abstract class Cirurgia implements Serializable {
 	
 	private String prontuario;
 	
+	private String cirurgiao;
+	
+	private Boolean realizada;
+	
+	
+	
 	@Column(nullable=true)
 	private String cpf;
 	
 	private String procedimento;
 	
-	private String cirurgiao;
-	
 	private Boolean reagendada;
 	
 	private Boolean cancelada;
 	
-	private Boolean realizada;
+
 	
 	@Temporal(TemporalType.DATE)
 	private Calendar dataCirurgiaMarcada;
@@ -103,9 +110,18 @@ public abstract class Cirurgia implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Calendar dataCirurgiaCancelada;
 
-	@OneToOne
+	@ManyToOne
 	private Paciente paciente;
-
+	
+	@OneToMany
+	@JoinColumn(name="id")
+	private List<Medico> medicos;
+	
+	@OneToMany
+	@JoinColumn(name="id")
+	private List<SIGEC> sigecs;
+	
+	
 	public String getProntuario() {
 		return prontuario;
 	}

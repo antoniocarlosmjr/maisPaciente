@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -23,10 +24,7 @@ public class AGHU implements Serializable {
 	
 	@Column(nullable = false)
 	private Long prontuario;
-
-	@Column(nullable = false)
-	private String cpf;
-
+	
 	private String nome;
 
 	private String uf_sigla;
@@ -35,10 +33,17 @@ public class AGHU implements Serializable {
 
 	private String fone_residencial;
 
+	@Column(nullable = true)
+	private String cpf;
+
 	@Temporal(TemporalType.DATE)
 	private Calendar dt_Nascimento;
 
+	@Column(nullable = true)
 	private Long nro_cartao_saude;
+	
+	@OneToOne
+	private Paciente paciente; 
 
 	public Long getProntuario() {
 		return prontuario;

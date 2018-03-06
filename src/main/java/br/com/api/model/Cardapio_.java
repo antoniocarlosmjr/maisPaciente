@@ -6,7 +6,7 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="Dali", date="2018-03-04T21:54:56.670-0300")
+@Generated(value="Dali", date="2018-03-06T16:26:14.322-0300")
 @StaticMetamodel(Cardapio.class)
 public class Cardapio_ {
 	public static volatile SingularAttribute<Cardapio, Long> id;

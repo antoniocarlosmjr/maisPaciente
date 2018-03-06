@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
@@ -79,6 +80,9 @@ public abstract class Pessoa implements Serializable {
 	
 	@OneToMany(mappedBy="pessoa")
 	private List<Token> tokens;
+	
+	@OneToOne
+	private Mapa mapa;
 	
 	public Calendar getDataNascimento() {
 		return dataNascimento;

@@ -20,10 +20,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-/*
- * Padrao Utilizado: Factory
- */
-
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Cirurgia implements Serializable {
@@ -51,7 +47,6 @@ public abstract class Cirurgia implements Serializable {
 	
 	private Boolean cancelada;
 	
-
 	
 	@Temporal(TemporalType.DATE)
 	private Calendar dataCirurgiaMarcada;
@@ -98,29 +93,6 @@ public abstract class Cirurgia implements Serializable {
 	public void setDataCirurgiaCancelada(Calendar dataCirurgiaCancelada) {
 		this.dataCirurgiaCancelada = dataCirurgiaCancelada;
 	}
-
-	public Paciente getPaciente() {
-		return paciente;
-	}
-
-	public void setPaciente(Paciente paciente) {
-		this.paciente = paciente;
-	}
-
-	@Temporal(TemporalType.DATE)
-	private Calendar dataCirurgiaCancelada;
-
-	@ManyToOne
-	private Paciente paciente;
-	
-	@OneToMany
-	@JoinColumn(name="id")
-	private List<Medico> medicos;
-	
-	@OneToMany
-	@JoinColumn(name="id")
-	private List<SIGEC> sigecs;
-	
 	
 	public String getProntuario() {
 		return prontuario;
@@ -169,4 +141,17 @@ public abstract class Cirurgia implements Serializable {
 	public void setRealizada(Boolean realizada) {
 		this.realizada = realizada;
 	}
+	
+	@Temporal(TemporalType.DATE)
+	private Calendar dataCirurgiaCancelada;
+	
+	@OneToOne
+	private Medico medico;
+	
+	@OneToOne
+	private SIGEC sigec;
+	
+	@OneToOne
+	private Paciente paciente;
+
 }

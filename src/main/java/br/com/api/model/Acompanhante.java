@@ -32,9 +32,12 @@ public class Acompanhante extends Pessoa implements Serializable{
 
 @ManyToOne
 private Paciente paciente;
+
+@ManyToOne
+private Mapa mapa;
+
+@ManyToOne
+private Cardapio cardapio;
 	
-@OneToMany
-@JoinColumn(name="id")
-private List<Cardapio> cardapios;
 
 }

@@ -10,19 +10,22 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Medico extends Pessoa implements Serializable{
+public class Medico extends Pessoa implements Serializable {
 
 	private static final long serialVersionUID = 3181776865840886312L;
 
-	@Column(unique=true, nullable=true)
+	@Column(unique = true, nullable = true)
 	private String especialidade;
-	
+
 	private String CRM;
-	
-	@ManyToMany
-	@JoinColumn(name="id")
+
+	@OneToMany
+	@JoinColumn(name = "id")
 	private List<Paciente> pacientes;
-	
+
+	@OneToMany
+	@JoinColumn(name = "id")
+	private List<Cirurgia> cirurgia;
 
 	public String getCRM() {
 		return CRM;
@@ -39,6 +42,5 @@ public class Medico extends Pessoa implements Serializable{
 	public void setEspecialidade(String especialidade) {
 		this.especialidade = especialidade;
 	}
-	
-	
-	}
+
+}

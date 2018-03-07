@@ -39,14 +39,6 @@ public class Cardapio implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Calendar data;
 	
-//	@OneToMany
-//	@JoinColumn(name="id")
-//	private List<Paciente> pacientes;
-//	
-//	@OneToMany
-//	@JoinColumn(name="id")
-//	private List<Acompanhante> acompanhantes;
-	
 	public Long getId() {
 		return id;
 	}
@@ -80,11 +72,14 @@ public class Cardapio implements Serializable {
 	}
 
 
-	@ManyToOne
-	private Paciente paciente;
+	@OneToMany
+	@JoinColumn(name="id")
+	private List<Paciente> pacientes;
 	
-	@ManyToOne
-	private Acompanhante acompanhante;
+	@OneToMany
+	@JoinColumn(name="id")
+	private List<Acompanhante> acompanhantes;
+	
 	
 	
 }

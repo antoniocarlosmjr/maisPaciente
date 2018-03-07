@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" xmlns:adm="http://github.com/adminfaces"
+                template="/WEB-INF/templates/template.acompanhante.xhtml">
+
+<ui:define name="title">
+        <strong>Cardápio do dia</strong>
+</ui:define>
+
+<ui:define name="body">
+<p:dataTable var="car" value="#{dtBasicView.cars}">
+    <p:column headerText="Dia">
+        <h:outputText value="#{car.id}" />
+    </p:column>
+ 
+    <p:column headerText="Café-da-manhã">
+        <h:outputText value="#{car.year}" />
+    </p:column>
+ 
+    <p:column headerText="Almoço">
+        <h:outputText value="#{car.brand}" />
+    </p:column>
+ 
+    <p:column headerText="Jantar">
+        <h:outputText value="#{car.color}" />
+    </p:column>
+</p:dataTable>
+
+ <p:commandButton value="Voltar" icon="fa fa-reply" onclick="javascript:history.back(1);" />
+</ui:define>
+
+</ui:composition>

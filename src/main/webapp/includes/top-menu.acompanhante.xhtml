@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pe="http://primefaces.org/ui/extensions">
+<style type="text/css">
+            .skin-blue-light .main-header .navbar {
+                background-color: #229d89;
+            }
+            .skin-blue a.dropdown-toggle {
+                background-color: #229d89 !important;
+            }
+            .skin-blue .main-header .navbar {
+			    background-color: #229d89;
+			}
+			.skin-blue .main-header .logo {
+			    background-color: #229d89;
+			    color: #fff;
+			    border-bottom: 0 solid transparent;
+			}
+</style>
+
+    <ul class="nav navbar-nav">
+      <!-- Só deve mostrar esse menu de notificações se for paciente ou acompanhante -->
+      <!-- Messages: style can be found in dropdown.less-->
+        <li class="dropdown notifications-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="fa fa-bell-o" style="font-size:18px;"></i>
+                  <span class="label label-danger" style="font-size:13px;">0</span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li class="header">Você tem 0 notificações.</li>
+                  <li>
+                  </li>
+                  <li class="footer"><a href="#">Ver todas</a></li>
+              </ul>
+        </li>
+
+        <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <pe:gravatar id="userImage"
+                             value="/resources/images/favicon.ico"/>
+                <span class="hidden-xs"><h:outputText value="{acompanhante.nome}" /></span>
+            </a>
+        </li>
+    </ul>
+</ui:composition>

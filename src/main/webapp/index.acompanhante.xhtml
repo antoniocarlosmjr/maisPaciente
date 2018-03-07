@@ -1,0 +1,88 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                template="WEB-INF/templates/template.acompanhante.xhtml">
+
+    <ui:define name="head-end">
+        <ui:param name="renderBreadCrumb" value="false"/>
+    </ui:define>
+
+    <ui:define name="title">
+        <p:growl autoUpdate="true" life="4000"/>
+
+        <section class="content-header">
+            <h1>
+                Seja bem-vindo ao +Paciente!
+                <small>Escolha o que deseja fazer</small>
+            </h1>            
+        </section>
+
+    <!-- dashboard para o paciente -->
+    <section class="content">
+      <!-- Small boxes (Stat box) -->
+      <div class="row">
+        <div class="col-lg-6 col-xs-10">
+          <!-- small box -->
+          <div class="small-box bg-blue">
+            <div class="inner">
+              <sup> <h3 style="font-size: 25px">MEUS DADOS</h3> </sup>
+            </div>
+            <div class="icon">
+              <i class="ion ion-android-create"></i>
+            </div>
+            <a href="pages/acompanhante/meusdados/meusdados.xhtml" class="small-box-footer" style="font-size: 20px" >Acessar <i  class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-6 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-olive">
+            <div class="inner">
+              <h3 style="font-size: 25px">ASSOCIAR PACIENTE</h3>
+            </div>
+            <div class="icon">
+              <i class="ion ion-android-contacts"></i>
+            </div>
+            <a href="pages/acompanhante/associarpaciente/associarpaciente.xhtml" class="small-box-footer" style="font-size: 20px">Acessar <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-6 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              <h3 style="font-size: 25px">CARDÁPIO</h3>
+            </div>
+            <div class="icon">
+              <i class="ion ion-ios-paper-outline"></i>
+            </div>
+            <a href="pages/acompanhante/cardapio/cardapio.xhtml" class="small-box-footer" style="font-size: 20px">Acessar <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-6 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-teal">
+            <div class="inner">
+              <h3 style="font-size: 25px">MAPA HU</h3>
+            </div>
+            <div class="icon">
+              <i class="ion ion-ios-location"></i>
+            </div>
+            <a href="pages/acompanhante/mapa/mapa.xhtml" class="small-box-footer" style="font-size: 20px">Acessar <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        </div>
+    </section> 
+        <!--
+        <h2 class="align-center">
+            Teste
+            <span class="text-aqua"> <i>
+                <a href="http://karanalpe.com.br/" target="_blank" style="text-transform: none;text-decoration: none"> :) </a></i>
+            </span>
+            <br/>
+            
+        </h2> -->
+    </ui:define>
+
+
+</ui:composition>

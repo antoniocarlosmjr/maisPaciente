@@ -6,14 +6,7 @@
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-<style type="text/css">
-	.container .row {
-    margin-left: -.75rem;
-    margin-right: -.75rem;
-}
-</style>
-	<title>+P|Login</title>
-	<title>+P|Ativar Cadastro Paciente</title>
+	<title>+P|Cadastro acompanhante</title>
 	<link rel="stylesheet"
 		href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" />
 	<script
@@ -53,28 +46,64 @@
 
 			<div class="center-align">
 				<div class="row">
-					<div class="col s6 input-field center" style="width:500px; ">
+					<div class="col s6 offset-s3">
 						<div class="card">
-								<h6>Por favor, preencha o formulário abaixo para se cadastrar como acompanhante.</h6>
+							<div class="card-content">
+
+								<h6><b>Por favor, preencha os campos abaixo</b></h6>
 
 								<div class="left-align">
-									<h:form id="login-form">
+									<h:form id="login-form1">
 										<p:growl autoUpdate="true" />
 										<div class="row">
 											<div class="col s12 input-field">
-												<h:outputLabel for="email" value="Email:" />
-												<p:inputText id="email" value="#{userLoginView.email}"
-													regEx="/[a-z0-9_\.\-@]/i" required="true" label="email" />
-
+												<h:outputLabel for="nomeC" value="Nome completo" />
+												<p:inputText id="nomeC" value=""
+												requiredMessage="O campo nome completo deve ser preenchido."
+											 	required="true" label="nome"  maxlength="60"
+											 	 />
 											</div>
-
 											<div class="col s12 input-field">
-												<h:inputSecret id="password" required="true"
-													value="#{userLoginView.password}"
-													requiredMessage="P1or favor, digite uma senha" />
-												<h:outputLabel for="password" value="Senha:" />
-
+												<h:outputLabel for="cpf" value="CPF" />
+												<p:inputMask id="cpf" value="#{UsuarioMB.usuario.id}" mask="999.999.999-99"
+                								required="true"  requiredMessage="Campo CPF deve ser preenchido."/>
 											</div>
+											<div>
+											
+											<p:outputLabel for="genero" value="Gênero.:"/>
+			            <p:selectOneMenu id="genero" value="#{selectOneMenuView.console}" style="width:125px">
+					            <f:selectItem itemLabel="Selecione" itemValue="" />
+					            <f:selectItem itemLabel="Feminino" itemValue="Feminino" />
+					            <f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+								<f:selectItem itemLabel="Outro" itemValue="Outro" />
+			        	</p:selectOneMenu>
+											</div>
+											<div class="col s12 input-field">
+												<p:inputMask type="telefone" id="telefone" value="#{maskView.date}" mask="(99) 99999-9999"
+													requiredMessage="Por favor, informe um telefone." />
+												<h:outputLabel for="telefone" value="Telefone/Contato" />
+											</div>
+											<div class="col s12 input-field">
+												<p:inputMask type="telefone" id="end" value="#{maskView.date}" mask="(99) 99999-9999"
+													requiredMessage="Por favor, informe um endereço." />
+												<h:outputLabel for="end" value="Endereço" />
+											</div>
+											<div class="col s12 input-field">
+												<p:inputMask type="email" id="emil" value="#{maskView.date}" mask="(99) 99999-9999"
+													requiredMessage="Por favor, informe um email." />
+												<h:outputLabel for="emil" value="Email" />
+											</div>
+											<div class="col s12 input-field">
+												<h:inputSecret type="password" id="senha" value="#{maskView.date}" mask="(99) 99999-9999"
+													requiredMessage="Por favor, informe uma senha." />
+												<h:outputLabel for="senha" value="Senha" />
+											</div>
+											<div class="col s12 input-field">
+												<h:inputSecret type="confirmesenha" id="confirmesenha" value="#{maskView.date}" mask="(99) 99999-9999"
+													requiredMessage="Por favor, informe ua confirmação de senha." />
+												<h:outputLabel for="confirmesenha" value="Confirme sua senha" />
+											</div>
+											
 
 											<div class="col s12 input-field center ">
 
@@ -87,63 +116,25 @@
 													action="#{giris.oturumac()}">
 													<f:ajax execute="login-form" render="login-mesaj" />
 												</h:commandButton>
-
-												<h:commandButton styleClass="btn btn-danger" margin="5px"
-													value="Cancelar" action="#{giris.oturumac()}"
-													onclick="javascript:window.location.href='/maisPaciente-0.0.1/login.paciente.xhtml';">
+												
+												<h:commandButton styleClass="btn btn-danger"
+													value="Cancelar"
+													onclick="javascript:window.location.href='/maisPaciente-0.0.1/login.paciente.xhtml';"
+													href="\cadastrar.acompanhante.xhtml"
+													action="#{giris.oturumac()}">
 													<f:ajax execute="login-form" render="login-mesaj" />
 												</h:commandButton>
 											</div>
+
+											<div class="col s12 input-field  center">
+												
+											</div>
+
+
 										</div>
-									<h:form id="registrationForm">
-										<p:panel header="Registration Form" width="600px">
-											<p:messages />
-											<h:panelGrid columns="2" 
-												columnClasses="labelColumn, fieldColumn">
-												<p:outputLabel value="Nome Completo" />
-												<p:inputText id="userName" 
-													value="#{userController.registrationUser.userName}"
-													label="UserName" />
-
-
-												<p:outputLabel value="Número de prontuário" />
-												<p:inputMask mask="999999999" id="prontuario"
-													value="#{userController.registrationUser.password}"
-													label="prontuario" />
-
-												<p:outputLabel for="numP" value="Numero de prontuário" />
-												<p:inputMask mask="9999999999" id="numP"
-													value="#{userController.registrationUser.firstName}"
-													label="cpf" />
-
-												<p:outputLabel value="Data de nascimento" />
-												<p:inputText id="nascimento"
-													value="#{userController.registrationUser.lastName}"
-													label="nascimento" />
-
-												<p:outputLabel value="Telefone/Celular" />
-												<p:inputText id="telefone"
-													value="#{userController.registrationUser.lastName}"
-													label="telefone" />
-
-												<p:outputLabel value="Endereço" />
-												<p:inputText id="endereco"
-													value="#{userController.registrationUser.lastName}"
-													label="endereco" />
-
-												<p:outputLabel value="Email" />
-												<p:inputText id="email"
-													value="#{userController.registrationUser.email}" />
-
-												<p:outputLabel value="" />
-												<p:commandButton action="#{userController.register}"
-													value="Cadastrar Paciente" update="registrationForm" />
-
-											</h:panelGrid>
-										</p:panel>
 
 									</h:form>
-									</h:form>
+
 								</div>
 							</div>
 
@@ -154,7 +145,7 @@
 
 			</div>
 		</div>
-	
+	</div>
 	<script type="text/javascript">
     /**
      * Faces Validator

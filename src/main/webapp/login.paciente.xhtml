@@ -58,9 +58,9 @@
 										<div class="row">
 											<div class="col s12 input-field">
 												<h:outputLabel for="email" value="Email:" />
-												<p:inputText id="email" value="#{autenticadorBean.email}"
+												<p:inputText id="email" class="validate" value="#{autenticadorBean.email}"
 												requiredMessage="Por favor, digite uma email válido"
-													regEx="/[a-z0-9_\.\-@]/i" required="true" label="email" />
+													regEx="/[a-z0-9_\.\-@]/i" data-error="wrong" required="true" label="email" />
 
 											</div>
 

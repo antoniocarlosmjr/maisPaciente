@@ -2,12 +2,16 @@ package br.com.api.model;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -33,7 +37,17 @@ public class SIGEC implements Serializable {
 	
 	private String cv_cirurgiao;
 	
+	@Column(nullable = true)
 	private String cv_reagendada;
+	
+	@OneToOne
+	private Paciente paciente;
+	
+	@OneToOne
+	private Medico medico;
+	
+	@OneToOne
+	private Cirurgia cirurgia;
 	
 	public Long getId_cirurgia() {
 		return id_cirurgia;

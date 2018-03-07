@@ -19,12 +19,14 @@ public class Paciente extends Pessoa implements Serializable{
 
 
 	private static final long serialVersionUID = 5251613389349045953L;
+
+	//Colunas do Banco
 	
 	@Column(unique=true, nullable=false)
 	private Long numProntuario;
 	
 	private Long cartaoSUS;
-	
+	@Column(nullable=false)
 	private Long acompanhanteAss;
 
 	public Long getCartaoSUS() {
@@ -43,18 +45,30 @@ public class Paciente extends Pessoa implements Serializable{
 		this.acompanhanteAss = acompanhanteAss;
 	}
 	
+	//Relacionamentos
+	
 	@OneToMany
 	private List<Acompanhante> acompanhantes;
 	
-	@OneToOne
-	private Cardapio cardapio;
+	@OneToMany
+	@JoinColumn(name="id")
+	private List<SIGEC> sigecs;
+	
+	@OneToMany
+	@JoinColumn(name="id")
+	private List<Cirurgia> cirurgias;
+	
+	@OneToMany
+	@JoinColumn(name="id")
+	private List<Medico> medicos;
+	
+	@ManyToOne
+	private Cardapio cardapios;
+	
+	@ManyToOne
+	private Mapa mapa;
 	
 	@OneToOne
 	private AGHU aghu;
-	
-		
-	
-	
-	
 
 }

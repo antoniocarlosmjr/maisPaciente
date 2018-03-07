@@ -5,7 +5,7 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="Dali", date="2018-03-01T14:33:34.361-0300")
+@Generated(value="Dali", date="2018-03-07T00:54:51.577-0300")
 @StaticMetamodel(AGHU.class)
 public class AGHU_ {
 	public static volatile SingularAttribute<AGHU, Long> id;
@@ -17,4 +17,5 @@ public class AGHU_ {
 	public static volatile SingularAttribute<AGHU, String> fone_residencial;
 	public static volatile SingularAttribute<AGHU, Calendar> dt_Nascimento;
 	public static volatile SingularAttribute<AGHU, Long> nro_cartao_saude;
+	public static volatile SingularAttribute<AGHU, Paciente> paciente;
 }

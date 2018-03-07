@@ -1,10 +1,12 @@
 package br.com.api.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Chefe extends Pessoa implements Serializable{
@@ -21,8 +23,9 @@ public class Chefe extends Pessoa implements Serializable{
 		this.numIdentificacao = numIdentificacao;
 	}
 	
-	@OneToOne
-	private Relatorio relatorio;
+	@OneToMany
+	@JoinColumn(name="id")
+	private List<Relatorio> relatorios;
 
 }
 

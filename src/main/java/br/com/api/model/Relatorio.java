@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -20,9 +21,12 @@ public class Relatorio implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column
+	@Column(nullable = true)
 	private String tipoRelatorio;
 
+	@ManyToOne
+	private Chefe chefe; 
+	
 	public String getTipoRelatorio() {
 		return tipoRelatorio;
 	}

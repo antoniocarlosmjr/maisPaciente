@@ -58,15 +58,16 @@
 										<div class="row">
 											<div class="col s12 input-field">
 												<h:outputLabel for="email" value="Email:" />
-												<p:inputText id="email" value="#{userLoginView.email}"
+												<p:inputText id="email" value="#{autenticadorBean.email}"
+												requiredMessage="Por favor, digite uma email válido"
 													regEx="/[a-z0-9_\.\-@]/i" required="true" label="email" />
 
 											</div>
 
 											<div class="col s12 input-field">
 												<h:inputSecret id="password" required="true"
-													value="#{userLoginView.password}"
-													requiredMessage="P1or favor, digite uma senha" />
+													value="#{autenticadorBean.senha}"
+													requiredMessage="Por favor, digite uma senha" />
 												<h:outputLabel for="password" value="Senha:" />
 
 											</div>
@@ -84,7 +85,7 @@
 												</h:commandButton>
 
 												<h:commandButton styleClass="btn" margin="5px"
-													value="Entrar" action="#{giris.oturumac()}">
+													value="Entrar" action="#{autenticadorBean.autentica()}">
 													<f:ajax execute="login-form" render="login-mesaj" />
 												</h:commandButton>
 											</div>
@@ -92,7 +93,8 @@
 											<div class="col s12 input-field  center">
 												<h:commandButton styleClass="btn btn-primary"
 													value="Novo Acompanhante? Clique aqui."
-													action="#{giris.oturumac()}">
+													action="#{giris.oturumac()}"
+													href="cadastrar.acompanhante.xhtml">
 													<f:ajax execute="login-form" render="login-mesaj" />
 												</h:commandButton>
 											</div>

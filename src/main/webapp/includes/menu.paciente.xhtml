@@ -39,11 +39,18 @@
                 </p:link>
             </li>
             <li>
-                <p:link href="">
-                    <i class="fa fa-sign-out" style="color:LightCoral;"></i>
-                    <span style="color:LightCoral;">Sair</span>
-                </p:link>
+                <p:commandLink onclick="javascript:window.location.href='/maisPaciente-0.0.1/login.paciente.xhtml';">
+					        <p:confirm header="Sair" message="Você tem certeza que deseja sair?" icon="ui-icon-alert" />
+					    <i style="color:LightCoral;" class="fa fa-sign-out"></i>
+					    <span style="color:LightCoral;">Sair</span>
+					    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+					        <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					        <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+					    </p:confirmDialog>
+				</p:commandLink>
             </li>
+            
+            
      </li>
     </ul>
 

@@ -105,5 +105,13 @@ public class SIGEC implements Serializable {
 		this.cv_reagendada = cv_reagendada;
 	}
 
+	public void consultarCirurgia(Object cirurgia2) {
+		
+	}
+
+	public void desistenciaCirurgia(long desistenciaCirurgia) {
+		
+	}
+
 }
 

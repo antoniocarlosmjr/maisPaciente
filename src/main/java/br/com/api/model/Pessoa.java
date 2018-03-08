@@ -35,7 +35,7 @@ public abstract class Pessoa implements Serializable {
 	
 	private String nome;
 	
-	private String genero;
+	private String sexo;
 	
 	private String telefone;
 	
@@ -65,12 +65,14 @@ public abstract class Pessoa implements Serializable {
 	@Transient
 	private String token;
 	
+	private String genero;
+	
 	@OneToMany(mappedBy="pessoa")
 	private List<Token> tokens;
 	
 	@OneToOne
 	private Mapa mapa;
-	
+
 	public Calendar getDataNascimento() {
 		return dataNascimento;
 	}
@@ -144,11 +146,11 @@ public abstract class Pessoa implements Serializable {
 	}
 
 	public String getSexo() {
-		return genero;
+		return sexo;
 	}
 
 	public void setSexo(String sexo) {
-		this.genero = genero;
+		this.sexo = sexo;
 	}
 
 	public String getTelefone() {
@@ -158,10 +160,17 @@ public abstract class Pessoa implements Serializable {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-
 	
-	public void setDatanascimento(String data) throws ParseException {
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+	public String getGenero() {
+		return genero;
+	}
+
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
+
+	public void setDataNascimento(String data) throws ParseException {
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
 		Calendar instance = Calendar.getInstance();
 		instance.setTime(simpleDateFormat.parse(data));
 		

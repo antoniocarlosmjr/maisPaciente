@@ -13,5 +13,7 @@ public interface DAO<T, E> {
 	public T consultarPorID(E e);
 	
 	public List<T> listar();
+
+	T consultarPorID(long l);
 	
 }

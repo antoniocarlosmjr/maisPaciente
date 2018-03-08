@@ -4,6 +4,8 @@ import org.mindrot.jbcrypt.BCrypt;
 
 public class UtilPassword {
 
+	private String crypt;
+	
 	public static String crypt(String password) {
 		return BCrypt.hashpw(password, BCrypt.gensalt(12));
 	}
@@ -13,15 +15,14 @@ public class UtilPassword {
 	}
 	
 	public static void main(String[] args) {
-		String password = "123";
+		String password = "#4cstt$sha1@!bc";
 		
 		String crypt = crypt(password);
-		
-		System.out.println(crypt);
 		
 		boolean check = check(password, crypt);
 		
 		System.out.println(check);
 	}
+
 	
 }

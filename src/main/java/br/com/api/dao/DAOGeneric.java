@@ -43,8 +43,8 @@ public abstract class DAOGeneric<T, E> implements DAO<T, E> {
 	}
 
 	@Override
-	public T consultarPorID(E e) {
-		return (T) this.entityManager.find(clas, e);
+	public T consultarPorID(long l) {
+		return (T) this.entityManager.find(clas, l);
 	}
 
 	@Override

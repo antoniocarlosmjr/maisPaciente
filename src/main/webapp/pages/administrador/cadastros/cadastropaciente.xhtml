@@ -1,61 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
-                xmlns:p="http://primefaces.org/ui" xmlns:adm="http://github.com/adminfaces"
-                template="/WEB-INF/templates/template.administrador.xhtml">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:adm="http://github.com/adminfaces"
+	template="/WEB-INF/templates/template.administrador.xhtml">
 
-<ui:define name="title">
-        <strong>Cadastrar Paciente</strong>
-</ui:define>
+	<ui:define name="title">
+		<strong>Cadastrar Paciente</strong>
+	</ui:define>
 
-<ui:define name="body">
+	<ui:define name="body">
 
-<h:form>
-           <h:panelGrid columns="2" cellpadding="5" hight="5">
-            	
-            	<p:outputLabel for="nome" value="Nome completo: "/>
-                <p:inputText id="nome" value="#{UsuarioMB.usuario.id}" size="40"
-                required="true"  requiredMessage="Campo Nome deve ser preenchido." />
-                
-                <p:outputLabel for="numProntuario" value="Nº prontuário: "/>
-                <p:inputMask id="numProntuario" value="#{UsuarioMB.usuario.id}" mask="9.999.999"
-                required="true"  requiredMessage="Campo de número de prontuário deve ser preenchido." />
-                
-                <p:outputLabel for="cpf" value="CPF:"/>
-                <p:inputMask id="cpf" value="#{UsuarioMB.usuario.id}" mask="999.999.999-99"
-                required="true"  requiredMessage="Campo CPF deve ser preenchido."/>
-            
-            	<p:outputLabel for="dataNasc" value="Data nasc.:"/>
-                <p:inputMask id="dataNasc" value="#{UsuarioMB.usuario.id}" mask="99/99/9999" 
-                required="true"  requiredMessage="Campo data de nascimento deve ser preenchido."/>
-                
-                <p:outputLabel for="genero" value="Gênero.:"/>
-	            <p:selectOneMenu id="genero" value="#{selectOneMenuView.console}" style="width:125px">
-			            <f:selectItem itemLabel="Selecione" itemValue="" />
-			            <f:selectItem itemLabel="Feminino" itemValue="Feminino" />
-			            <f:selectItem itemLabel="Masculino" itemValue="Masculino" />
-						<f:selectItem itemLabel="Outro" itemValue="Outro" />
-	        	</p:selectOneMenu>
-                
-                <p:outputLabel for="email" value="E-mail:"/>
-                <p:inputMask id="email" value="#{UsuarioMB.usuario.id}"  size="40"
-                required="true"  requiredMessage="Campo e-mail deve ser preenchido."/>
-                
-                <p:outputLabel value="Tel./Contato:" for="telefone-user" />
-            	<p:inputMask mask="(99) 99999-9999" value="#{userBean.user.telefone}" id="telefone-user"
-                required="true"  requiredMessage="Campo Telefone deve ser preenchido."/>
-                
-                <p:outputLabel value="Endereço:" for="end"/>
-            	<p:inputText value="#{userBean.user.telefone}" id="end" size="40" />
-   				<br></br>
-       	</h:panelGrid>
-</h:form>      
-<p:commandButton class="btn btn-danger" value="Cancelar" icon="fa fa-times" onclick="javascript:history.back(1);" />
-<p:commandButton  class="btn btn-success" value="Cadastrar" icon="fa fa-plus" 
-                   action="#{UsuarioMB.cadastraUsuario}" update="messages">
-                  </p:commandButton>
+		<h:form>
+			<h:panelGrid columns="2" cellpadding="5" hight="5">
 
-</ui:define>
+				<p:outputLabel for="nome" value="Nome completo: " />
+				<p:inputText id="nome" value="#{UsuarioMB.usuario.id}" size="40"
+					style="margin-left:20px; margin-top:10px" required="true"
+					requiredMessage="Campo Nome deve ser preenchido." />
+
+				<p:outputLabel for="numProntuario" value="Nº prontuário: " />
+				<p:inputMask id="numProntuario" value="#{UsuarioMB.usuario.id}"
+					mask="9.999.999" style="margin-left:20px; margin-top:10px"
+					required="true"
+					requiredMessage="Campo de número de prontuário deve ser preenchido." />
+
+				<p:outputLabel for="cpf" value="CPF:" />
+				<p:inputMask id="cpf" value="#{UsuarioMB.usuario.id}"
+					mask="999.999.999-99" style="margin-left:20px; margin-top:10px"
+					required="true" requiredMessage="Campo CPF deve ser preenchido." />
+
+				<p:outputLabel for="dataNasc" value="Data nasc.:" />
+				<p:inputMask id="dataNasc" value="#{UsuarioMB.usuario.id}"
+					mask="99/99/9999" style="margin-left:20px; margin-top:10px"
+					required="true"
+					requiredMessage="Campo data de nascimento deve ser preenchido." />
+
+				<p:outputLabel for="genero" value="Gênero.:" />
+				<p:selectOneMenu id="genero" value="#{selectOneMenuView.console}"
+					style="width:125px; margin-left:20px; margin-top:10px">
+					<f:selectItem itemLabel="Selecione" itemValue="" />
+					<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
+					<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+					<f:selectItem itemLabel="Outro" itemValue="Outro" />
+				</p:selectOneMenu>
+
+				<p:outputLabel for="email" value="E-mail:" />
+				<p:inputMask id="email" value="#{UsuarioMB.usuario.id}" size="40"
+					style="margin-left:20px; margin-top:10px" required="true"
+					requiredMessage="Campo e-mail deve ser preenchido." />
+
+				<p:outputLabel value="Tel./Contato:" for="telefone-user" />
+				<p:inputMask mask="(99) 99999-9999"
+					value="#{userBean.user.telefone}" id="telefone-user"
+					style="margin-left:20px; margin-top:10px" required="true"
+					requiredMessage="Campo Telefone deve ser preenchido." />
+
+				<p:outputLabel value="Endereço:" for="end" />
+				<p:inputText value="#{userBean.user.telefone}" 
+				style="margin-left:20px; margin-top:10px" id="end" size="40" />
+				
+				<br></br>
+			</h:panelGrid>
+		</h:form>
+		<p:commandButton class="btn btn-danger" value="Cancelar"
+			style="margin-left:20px; margin-top:10px"
+			icon="fa fa-times" onclick="javascript:history.back(1);" />
+		<p:commandButton class="btn btn-success" value="Cadastrar"
+			style="margin-left:20px; margin-top:10px"
+			icon="fa fa-plus" action="#{UsuarioMB.cadastraUsuario}"
+			update="messages">
+		</p:commandButton>
+
+	</ui:define>
 
 
 </ui:composition>

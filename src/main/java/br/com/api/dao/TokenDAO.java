@@ -19,4 +19,9 @@ public class TokenDAO extends DAOGeneric<Token, Long> {
 	public TokenDAO(EntityManager manager) {
 		super(Token.class, manager);
 	}
+
+	@Override
+	public Token consultarPorID(Long e) {
+		return null;
+	}
 }

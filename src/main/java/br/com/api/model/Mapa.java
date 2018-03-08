@@ -62,11 +62,11 @@ public class Mapa implements Serializable {
 	}
 
 	@OneToMany
-	@JoinColumn(name="id")
+	@JoinColumn(name="id", nullable = true)
 	private List<Paciente> pacientes;
 	
 	@OneToMany
-	@JoinColumn(name="id")
+	@JoinColumn(name="id", nullable = true)
 	private List<Acompanhante> acompanhantes;
 	
 }

@@ -11,14 +11,12 @@ import org.hibernate.SessionFactory;
 import org.apache.log4j.Logger;
 
 import br.com.api.model.Paciente;
+import br.com.api.model.Pessoa;
 
 /**
  * Classe responsável por acesso a entidade Paciente
  */
 
-@ManagedBean(name = "pacienteCadastro")
-
-@ViewScoped
 public class PacienteDAO extends DAOGeneric<Paciente, Paciente> {
 
 	/*
@@ -28,5 +26,11 @@ public class PacienteDAO extends DAOGeneric<Paciente, Paciente> {
 
 	@ManagedProperty(value = "#{paciente}")
 	private Paciente paciente;
+
+	@Override
+	public Paciente consultarPorID(Paciente e) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

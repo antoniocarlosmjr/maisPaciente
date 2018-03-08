@@ -26,8 +26,8 @@ public class PessoaDAO extends DAOGeneric<Pessoa, Long> {
 	
 	public Pessoa consultarPorToken(String jwt) {
 		try {
-			return super.consultarPorID(UtilToken.decode(jwt));
-		} catch (IllegalArgumentException | UnsupportedEncodingException e) {
+			return null;
+		} catch (IllegalArgumentException e) {
 			return null;
 		}
 	}
@@ -47,6 +47,12 @@ public class PessoaDAO extends DAOGeneric<Pessoa, Long> {
 		} catch (NoResultException e) {
 			return null;
 		}
+	}
+
+	@Override
+	public Pessoa consultarPorID(Long e) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

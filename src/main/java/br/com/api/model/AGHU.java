@@ -98,7 +98,7 @@ public class AGHU implements Serializable {
 	}
 
 	public void setDt_Nascimento(String dt_Nascimento) throws ParseException {
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
 		Calendar instance = Calendar.getInstance();
 		instance.setTime(simpleDateFormat.parse(dt_Nascimento));
 		

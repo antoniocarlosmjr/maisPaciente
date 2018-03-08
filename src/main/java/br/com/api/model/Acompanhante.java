@@ -38,6 +38,11 @@ private Mapa mapa;
 
 @ManyToOne
 private Cardapio cardapio;
+
+
+public void consultarProntuario(long numeroProntuario) {
+	
+}
 	
 
 }

@@ -22,8 +22,9 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
-	<link rel="shortcut icon" type="image/x-icon" href="#{resource['images/favicon.ico']}"/>
-	
+	<link rel="shortcut icon" type="image/x-icon"
+		href="#{resource['images/favicon.ico']}" />
+
 </h:head>
 <h:body styleClass="Hex Gray98">
 
@@ -50,7 +51,9 @@
 						<div class="card">
 							<div class="card-content">
 
-								<h6><b>Por favor, preencha os campos abaixo</b></h6>
+								<h6>
+									<b>Por favor, preencha os campos abaixo</b>
+								</h6>
 
 								<div class="left-align">
 									<h:form id="login-form1">
@@ -59,51 +62,57 @@
 											<div class="col s12 input-field">
 												<h:outputLabel for="nomeC" value="Nome completo" />
 												<p:inputText id="nomeC" value=""
-												requiredMessage="O campo nome completo deve ser preenchido."
-											 	required="true" label="nome"  maxlength="60"
-											 	 />
+													requiredMessage="O campo nome completo deve ser preenchido."
+													required="true" label="nome" maxlength="60" />
 											</div>
 											<div class="col s12 input-field">
 												<h:outputLabel for="cpf" value="CPF" />
-												<p:inputMask id="cpf" value="#{UsuarioMB.usuario.id}" mask="999.999.999-99"
-                								required="true"  requiredMessage="Campo CPF deve ser preenchido."/>
+												<p:inputMask id="cpf" value="#{UsuarioMB.usuario.id}"
+													mask="999.999.999-99" required="true"
+													requiredMessage="Campo CPF deve ser preenchido." />
 											</div>
 											<div>
-											
-											<p:outputLabel for="genero" value="Gênero.:"/>
-			            <p:selectOneMenu id="genero" value="#{selectOneMenuView.console}" style="width:125px">
-					            <f:selectItem itemLabel="Selecione" itemValue="" />
-					            <f:selectItem itemLabel="Feminino" itemValue="Feminino" />
-					            <f:selectItem itemLabel="Masculino" itemValue="Masculino" />
-								<f:selectItem itemLabel="Outro" itemValue="Outro" />
-			        	</p:selectOneMenu>
+
+												<p:outputLabel for="genero" value="Gênero:" />
+												<p:selectOneMenu id="genero"
+													value="#{selectOneMenuView.console}" style="width:125px">
+													<f:selectItem itemLabel="Selecione" itemValue="" />
+													<f:selectItem itemLabel="Feminino" itemValue="Feminino" />
+													<f:selectItem itemLabel="Masculino" itemValue="Masculino" />
+													<f:selectItem itemLabel="Outro" itemValue="Outro" />
+												</p:selectOneMenu>
 											</div>
 											<div class="col s12 input-field">
-												<p:inputMask type="telefone" id="telefone" value="#{maskView.date}" mask="(99) 99999-9999"
+												<p:inputMask type="telefone" id="telefone"
+													value="#{maskView.date}" mask="(99) 99999-9999"
 													requiredMessage="Por favor, informe um telefone." />
 												<h:outputLabel for="telefone" value="Telefone/Contato" />
 											</div>
 											<div class="col s12 input-field">
-												<p:inputMask type="telefone" id="end" value="#{maskView.date}" mask="(99) 99999-9999"
+												<p:inputMask type="telefone" id="end"
+													value="#{maskView.date}" mask="(99) 99999-9999"
 													requiredMessage="Por favor, informe um endereço." />
 												<h:outputLabel for="end" value="Endereço" />
 											</div>
 											<div class="col s12 input-field">
-												<p:inputMask type="email" id="emil" value="#{maskView.date}" mask="(99) 99999-9999"
+												<p:inputMask type="email" id="email" value="#{maskView.date}"
 													requiredMessage="Por favor, informe um email." />
 												<h:outputLabel for="emil" value="Email" />
 											</div>
 											<div class="col s12 input-field">
-												<h:inputSecret type="password" id="senha" value="#{maskView.date}" mask="(99) 99999-9999"
+												<h:inputSecret type="password" id="senha"
+													value="#{maskView.date}" mask="(99) 99999-9999"
 													requiredMessage="Por favor, informe uma senha." />
 												<h:outputLabel for="senha" value="Senha" />
 											</div>
 											<div class="col s12 input-field">
-												<h:inputSecret type="confirmesenha" id="confirmesenha" value="#{maskView.date}" mask="(99) 99999-9999"
+												<h:inputSecret type="confirmesenha" id="confirmesenha"
+													value="#{maskView.date}" mask="(99) 99999-9999"
 													requiredMessage="Por favor, informe ua confirmação de senha." />
-												<h:outputLabel for="confirmesenha" value="Confirme sua senha" />
+												<h:outputLabel for="confirmesenha"
+													value="Confirme sua senha" />
 											</div>
-											
+
 
 											<div class="col s12 input-field center ">
 
@@ -111,12 +120,6 @@
 													style="color:red" />
 												<br></br>
 
-												<h:commandButton styleClass="btn btn-success"
-													value="Cadastrar" style="margin-right:17px"
-													action="#{giris.oturumac()}">
-													<f:ajax execute="login-form" render="login-mesaj" />
-												</h:commandButton>
-												
 												<h:commandButton styleClass="btn btn-danger"
 													value="Cancelar"
 													onclick="javascript:window.location.href='/maisPaciente-0.0.1/login.paciente.xhtml';"
@@ -124,11 +127,17 @@
 													action="#{giris.oturumac()}">
 													<f:ajax execute="login-form" render="login-mesaj" />
 												</h:commandButton>
+
+												<h:commandButton styleClass="btn btn-success"
+													value="Cadastrar" style="margin-left:17px"
+													action="#{giris.oturumac()}">
+													<f:ajax execute="login-form" render="login-mesaj" />
+												</h:commandButton>
+
+
 											</div>
 
-											<div class="col s12 input-field  center">
-												
-											</div>
+											<div class="col s12 input-field  center"></div>
 
 
 										</div>

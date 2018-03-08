@@ -79,7 +79,8 @@ public class Cardapio implements Serializable {
 	@OneToMany
 	@JoinColumn(name="id")
 	private List<Acompanhante> acompanhantes;
-	
-	
+
+	public void consultarCardapio(long getgetIdCardapio) {
+	}
 	
 }
